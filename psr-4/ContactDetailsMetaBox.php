@@ -86,6 +86,14 @@ final class ContactDetailsMetaBox {
 				'in_footer' => true,
 			]
 		);
+
+		\wp_add_inline_style(
+			'common',
+			'.orbis-contact-email-address { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; }
+			.orbis-contact-email-address-label { width: 10em; }
+			.orbis-contact-email-address-remove { color: #646970; }
+			.orbis-contact-email-address-remove:hover { color: #d63638; }'
+		);
 	}
 
 	/**
@@ -105,47 +113,36 @@ final class ContactDetailsMetaBox {
 		];
 
 		?>
-		<h4><?php \esc_html_e( 'Email Addresses', 'orbis-contacts' ); ?></h4>
+		<table class="form-table" role="presentation">
+			<tr>
+				<th scope="row"><?php \esc_html_e( 'Email Addresses', 'orbis-contacts' ); ?></th>
+				<td>
+					<div class="orbis-contact-email-addresses">
+						<?php
 
-		<table class="widefat striped orbis-contact-email-addresses">
-			<thead>
-				<tr>
-					<th scope="col"><?php \esc_html_e( 'Email Address', 'orbis-contacts' ); ?></th>
-					<th scope="col"><?php \esc_html_e( 'Label', 'orbis-contacts' ); ?></th>
-					<th scope="col"><span class="screen-reader-text"><?php \esc_html_e( 'Actions', 'orbis-contacts' ); ?></span></th>
-				</tr>
-			</thead>
+						foreach ( $email_addresses as $index => $email_address ) {
+							$this->render_email_address_row( (string) $index, $email_address['email'], $email_address['label'] );
+						}
 
-			<tbody>
-				<?php
+						?>
+					</div>
 
-				foreach ( $email_addresses as $index => $email_address ) {
-					$this->render_email_address_row( (string) $index, $email_address['email'], $email_address['label'] );
-				}
+					<button type="button" class="button-link orbis-contact-email-address-add">
+						<?php \esc_html_e( 'Add email address', 'orbis-contacts' ); ?>
+					</button>
 
-				?>
-			</tbody>
+					<template class="orbis-contact-email-address-template">
+						<?php $this->render_email_address_row( '__index__', '', '' ); ?>
+					</template>
 
-			<tfoot>
-				<tr>
-					<td colspan="3">
-						<button type="button" class="button orbis-contact-email-address-add">
-							<?php \esc_html_e( 'Add email address', 'orbis-contacts' ); ?>
-						</button>
-					</td>
-				</tr>
-			</tfoot>
+					<datalist id="orbis-contact-email-labels">
+						<option value="<?php echo \esc_attr__( 'Work', 'orbis-contacts' ); ?>"></option>
+						<option value="<?php echo \esc_attr__( 'Home', 'orbis-contacts' ); ?>"></option>
+						<option value="<?php echo \esc_attr__( 'Other', 'orbis-contacts' ); ?>"></option>
+					</datalist>
+				</td>
+			</tr>
 		</table>
-
-		<template class="orbis-contact-email-address-template">
-			<?php $this->render_email_address_row( '__index__', '', '' ); ?>
-		</template>
-
-		<datalist id="orbis-contact-email-labels">
-			<option value="<?php echo \esc_attr__( 'Work', 'orbis-contacts' ); ?>"></option>
-			<option value="<?php echo \esc_attr__( 'Home', 'orbis-contacts' ); ?>"></option>
-			<option value="<?php echo \esc_attr__( 'Other', 'orbis-contacts' ); ?>"></option>
-		</datalist>
 		<?php
 	}
 
@@ -161,19 +158,14 @@ final class ContactDetailsMetaBox {
 		$name = 'orbis_contact_email_addresses[' . $index . ']';
 
 		?>
-		<tr>
-			<td>
-				<input type="email" name="<?php echo \esc_attr( $name . '[email]' ); ?>" value="<?php echo \esc_attr( $email ); ?>" class="large-text" aria-label="<?php echo \esc_attr__( 'Email Address', 'orbis-contacts' ); ?>" />
-			</td>
-			<td>
-				<input type="text" name="<?php echo \esc_attr( $name . '[label]' ); ?>" value="<?php echo \esc_attr( $label ); ?>" class="regular-text" list="orbis-contact-email-labels" aria-label="<?php echo \esc_attr__( 'Label', 'orbis-contacts' ); ?>" />
-			</td>
-			<td>
-				<button type="button" class="button-link button-link-delete orbis-contact-email-address-remove">
-					<?php \esc_html_e( 'Remove', 'orbis-contacts' ); ?>
-				</button>
-			</td>
-		</tr>
+		<p class="orbis-contact-email-address">
+			<input type="email" name="<?php echo \esc_attr( $name . '[email]' ); ?>" value="<?php echo \esc_attr( $email ); ?>" class="regular-text" placeholder="<?php echo \esc_attr__( 'Email Address', 'orbis-contacts' ); ?>" aria-label="<?php echo \esc_attr__( 'Email Address', 'orbis-contacts' ); ?>" />
+			<input type="text" name="<?php echo \esc_attr( $name . '[label]' ); ?>" value="<?php echo \esc_attr( $label ); ?>" class="orbis-contact-email-address-label" list="orbis-contact-email-labels" placeholder="<?php echo \esc_attr__( 'Label', 'orbis-contacts' ); ?>" aria-label="<?php echo \esc_attr__( 'Label', 'orbis-contacts' ); ?>" />
+			<button type="button" class="button-link orbis-contact-email-address-remove">
+				<span class="dashicons dashicons-trash" aria-hidden="true"></span>
+				<span class="screen-reader-text"><?php \esc_html_e( 'Remove', 'orbis-contacts' ); ?></span>
+			</button>
+		</p>
 		<?php
 	}
 
