@@ -25,6 +25,47 @@ A post type becomes a contact by supporting `orbis-contact`, Orbis Persons and O
 - Every contact post gets a row in the `{prefix}orbis_contacts` table (`id`, `post_id`, `created_at`, `updated_at`).
 - Contact details are stored in post meta, connections between contacts use [Posts 2 Posts](https://github.com/scribu/wp-posts-to-posts).
 
+## Contact details
+
+Every contact post type gets a "Contact Details" meta box with multiple email addresses, each with a label (e.g. Work, Home, Other).
+
+| Meta key | Value |
+|---|---|
+| `_orbis_contact_email` | One row per email address, a plain email address string. |
+| `_orbis_contact_json` | The whole contact as one JSON string, see [`json-schemas/contact.json`](json-schemas/contact.json). |
+
+Because every email address is a separate meta row, contacts are easy to find with a meta query:
+
+```php
+$query = new \WP_Query(
+	[
+		'post_type'  => 'orbis_contact',
+		'meta_key'   => '_orbis_contact_email',
+		'meta_value' => 'info@example.com',
+	]
+);
+```
+
+The `_orbis_contact_json` post meta looks like this:
+
+```json
+{
+	"$schema": "https://github.com/pronamic/wp-orbis-contacts/json-schemas/contact.json",
+	"post_id": 123,
+	"contact_id": 45,
+	"type": "orbis_person",
+	"name": "John Doe",
+	"email_addresses": [
+		{
+			"email": "info@example.com",
+			"label": "Work"
+		}
+	]
+}
+```
+
+Use `ContactJson::get( $post_id )` and `ContactJson::get_email_addresses( $post_id )` to read the contact details.
+
 ## Requirements
 
 - PHP 8.3+

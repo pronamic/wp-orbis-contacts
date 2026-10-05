@@ -1,0 +1,65 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://github.com/pronamic/wp-orbis-contacts/json-schemas/contact.json",
+	"title": "Orbis contact",
+	"description": "Contact data stored in the `_orbis_contact_json` post meta of posts of a post type that supports `orbis-contact`.",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"type": "string",
+			"format": "uri"
+		},
+		"post_id": {
+			"description": "WordPress post ID.",
+			"type": "integer",
+			"minimum": 1
+		},
+		"contact_id": {
+			"description": "ID in the `{prefix}orbis_contacts` table.",
+			"type": [
+				"integer",
+				"null"
+			],
+			"minimum": 1
+		},
+		"type": {
+			"description": "WordPress post type, for example `orbis_person` or `orbis_organization`.",
+			"type": "string"
+		},
+		"name": {
+			"description": "Contact name, the WordPress post title.",
+			"type": "string"
+		},
+		"email_addresses": {
+			"description": "Email addresses of the contact.",
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/email_address"
+			}
+		}
+	},
+	"required": [
+		"post_id",
+		"type",
+		"name",
+		"email_addresses"
+	],
+	"$defs": {
+		"email_address": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string",
+					"format": "email"
+				},
+				"label": {
+					"description": "Free label, for example `Work`, `Home` or `Other`.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"email"
+			]
+		}
+	}
+}

@@ -71,5 +71,7 @@ final class Plugin {
 		new ContactPostType();
 		new ContactTaxonomies();
 		new ContactsTable();
+		new ContactJson();
+		new ContactDetailsMetaBox( $this->plugin_file );
 	}
 }

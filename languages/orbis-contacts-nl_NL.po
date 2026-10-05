@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-10-05T09:33:11+00:00\n"
-"PO-Revision-Date: 2026-10-05T12:39:09+00:00\n"
+"PO-Revision-Date: 2026-10-05T13:19:46+00:00\n"
 "Language: nl_NL\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-contacts\n"
@@ -37,6 +37,48 @@ msgstr "Pronamic"
 #: orbis-contacts.php:18
 msgid "https://www.pronamic.eu/"
 msgstr "https://www.pronamic.nl/"
+
+#: psr-4/ContactDetailsMetaBox.php:55
+msgid "Contact Details"
+msgstr "Contactgegevens"
+
+#: psr-4/ContactDetailsMetaBox.php:108
+msgid "Email Addresses"
+msgstr "E-mailadressen"
+
+#: psr-4/ContactDetailsMetaBox.php:113
+#: psr-4/ContactDetailsMetaBox.php:166
+msgid "Email Address"
+msgstr "E-mailadres"
+
+#: psr-4/ContactDetailsMetaBox.php:114
+#: psr-4/ContactDetailsMetaBox.php:169
+msgid "Label"
+msgstr "Label"
+
+#: psr-4/ContactDetailsMetaBox.php:115
+msgid "Actions"
+msgstr "Acties"
+
+#: psr-4/ContactDetailsMetaBox.php:133
+msgid "Add email address"
+msgstr "E-mailadres toevoegen"
+
+#: psr-4/ContactDetailsMetaBox.php:145
+msgid "Work"
+msgstr "Werk"
+
+#: psr-4/ContactDetailsMetaBox.php:146
+msgid "Home"
+msgstr "Privé"
+
+#: psr-4/ContactDetailsMetaBox.php:147
+msgid "Other"
+msgstr "Overig"
+
+#: psr-4/ContactDetailsMetaBox.php:173
+msgid "Remove"
+msgstr "Verwijderen"
 
 #: psr-4/ContactPostType.php:66
 #: psr-4/ContactPostType.php:74
@@ -78,157 +120,157 @@ msgstr "contacten"
 #: psr-4/ContactPostType.php:167
 #: psr-4/ContactPostType.php:172
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: psr-4/ContactTaxonomies.php:47
 msgctxt "taxonomy general name"
 msgid "Categories"
-msgstr ""
+msgstr "Categorieën"
 
 #: psr-4/ContactTaxonomies.php:48
 msgctxt "taxonomy singular name"
 msgid "Category"
-msgstr ""
+msgstr "Categorie"
 
 #: psr-4/ContactTaxonomies.php:49
 msgid "Search Categories"
-msgstr ""
+msgstr "Categorieën zoeken"
 
 #: psr-4/ContactTaxonomies.php:50
 msgid "All Categories"
-msgstr ""
+msgstr "Alle categorieën"
 
 #: psr-4/ContactTaxonomies.php:51
 msgid "Parent Category"
-msgstr ""
+msgstr "Hoofdcategorie"
 
 #: psr-4/ContactTaxonomies.php:52
 msgid "Parent Category:"
-msgstr ""
+msgstr "Hoofdcategorie:"
 
 #: psr-4/ContactTaxonomies.php:53
 msgid "Edit Category"
-msgstr ""
+msgstr "Categorie bewerken"
 
 #: psr-4/ContactTaxonomies.php:54
 msgid "Update Category"
-msgstr ""
+msgstr "Categorie bijwerken"
 
 #: psr-4/ContactTaxonomies.php:55
 msgid "Add New Category"
-msgstr ""
+msgstr "Nieuwe categorie toevoegen"
 
 #: psr-4/ContactTaxonomies.php:56
 msgid "New Category Name"
-msgstr ""
+msgstr "Nieuwe categorienaam"
 
 #: psr-4/ContactTaxonomies.php:57
 msgid "Categories"
-msgstr ""
+msgstr "Categorieën"
 
 #: psr-4/ContactTaxonomies.php:62
 msgctxt "slug"
 msgid "contact-category"
-msgstr ""
+msgstr "contact-categorie"
 
 #: psr-4/ContactTaxonomies.php:73
 msgctxt "taxonomy general name"
 msgid "Payment Methods"
-msgstr ""
+msgstr "Betaalmethoden"
 
 #: psr-4/ContactTaxonomies.php:74
 msgctxt "taxonomy singular name"
 msgid "Payment Method"
-msgstr ""
+msgstr "Betaalmethode"
 
 #: psr-4/ContactTaxonomies.php:75
 msgid "Search Payment Methods"
-msgstr ""
+msgstr "Betaalmethoden zoeken"
 
 #: psr-4/ContactTaxonomies.php:76
 msgid "All Payment Methods"
-msgstr ""
+msgstr "Alle betaalmethoden"
 
 #: psr-4/ContactTaxonomies.php:77
 msgid "Parent Payment Method"
-msgstr ""
+msgstr "Bovenliggende betaalmethode"
 
 #: psr-4/ContactTaxonomies.php:78
 msgid "Parent Payment Method:"
-msgstr ""
+msgstr "Bovenliggende betaalmethode:"
 
 #: psr-4/ContactTaxonomies.php:79
 msgid "Edit Payment Method"
-msgstr ""
+msgstr "Betaalmethode bewerken"
 
 #: psr-4/ContactTaxonomies.php:80
 msgid "Update Payment Method"
-msgstr ""
+msgstr "Betaalmethode bijwerken"
 
 #: psr-4/ContactTaxonomies.php:81
 msgid "Add New Payment Method"
-msgstr ""
+msgstr "Nieuwe betaalmethode toevoegen"
 
 #: psr-4/ContactTaxonomies.php:82
 msgid "New Payment Method Name"
-msgstr ""
+msgstr "Nieuwe betaalmethodenaam"
 
 #: psr-4/ContactTaxonomies.php:83
 msgid "Payment Methods"
-msgstr ""
+msgstr "Betaalmethoden"
 
 #: psr-4/ContactTaxonomies.php:88
 msgctxt "slug"
 msgid "payment-methods"
-msgstr ""
+msgstr "betaalmethoden"
 
 #: psr-4/ContactTaxonomies.php:100
 msgctxt "taxonomy general name"
 msgid "Invoice Shipping Methods"
-msgstr ""
+msgstr "Factuurverzendmethoden"
 
 #: psr-4/ContactTaxonomies.php:101
 msgctxt "taxonomy singular name"
 msgid "Invoice Shipping Method"
-msgstr ""
+msgstr "Factuurverzendmethode"
 
 #: psr-4/ContactTaxonomies.php:102
 msgid "Search Invoice Shipping Methods"
-msgstr ""
+msgstr "Factuurverzendmethoden zoeken"
 
 #: psr-4/ContactTaxonomies.php:103
 msgid "All Invoice Shipping Methods"
-msgstr ""
+msgstr "Alle factuurverzendmethoden"
 
 #: psr-4/ContactTaxonomies.php:104
 msgid "Parent Invoice Shipping Method"
-msgstr ""
+msgstr "Bovenliggende factuurverzendmethode"
 
 #: psr-4/ContactTaxonomies.php:105
 msgid "Parent Invoice Shipping Method:"
-msgstr ""
+msgstr "Bovenliggende factuurverzendmethode:"
 
 #: psr-4/ContactTaxonomies.php:106
 msgid "Edit Invoice Shipping Method"
-msgstr ""
+msgstr "Factuurverzendmethode bewerken"
 
 #: psr-4/ContactTaxonomies.php:107
 msgid "Update Invoice Shipping Method"
-msgstr ""
+msgstr "Factuurverzendmethode bijwerken"
 
 #: psr-4/ContactTaxonomies.php:108
 msgid "Add New Invoice Shipping Method"
-msgstr ""
+msgstr "Nieuwe factuurverzendmethode toevoegen"
 
 #: psr-4/ContactTaxonomies.php:109
 msgid "New Invoice Shipping Method Name"
-msgstr ""
+msgstr "Nieuwe factuurverzendmethodenaam"
 
 #: psr-4/ContactTaxonomies.php:110
 msgid "Invoice Shipping Methods"
-msgstr ""
+msgstr "Factuurverzendmethoden"
 
 #: psr-4/ContactTaxonomies.php:115
 msgctxt "slug"
 msgid "invoice-shipping-methods"
-msgstr ""
+msgstr "factuurverzendmethoden"
