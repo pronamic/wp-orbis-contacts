@@ -235,10 +235,17 @@ final class ContactDetailsMetaBox {
 
 		$email_addresses = \array_values( $email_addresses );
 
-		\delete_post_meta( $post_id, '_orbis_contact_email' );
+		$current_emails = \get_post_meta( $post_id, '_orbis_contact_email', false );
+		$current_emails = \array_filter( \is_array( $current_emails ) ? $current_emails : [], 'is_string' );
 
-		foreach ( $email_addresses as $email_address ) {
-			\add_post_meta( $post_id, '_orbis_contact_email', $email_address['email'] );
+		$new_emails = \array_column( $email_addresses, 'email' );
+
+		foreach ( \array_diff( $current_emails, $new_emails ) as $email ) {
+			\delete_post_meta( $post_id, '_orbis_contact_email', $email );
+		}
+
+		foreach ( \array_diff( $new_emails, $current_emails ) as $email ) {
+			\add_post_meta( $post_id, '_orbis_contact_email', $email );
 		}
 
 		ContactJson::update( $post_id, $email_addresses );
