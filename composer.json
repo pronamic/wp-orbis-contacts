@@ -1,0 +1,86 @@
+{
+	"name": "pronamic/wp-orbis-contacts",
+	"description": "WordPress plugin for Orbis that provides a shared contact layer for persons and organizations, including email addresses, phone numbers, social accounts and relations between contacts.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"autoload": {
+		"psr-4": {
+			"Pronamic\\Orbis\\Contacts\\": "psr-4/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Pronamic",
+			"email": "support@pronamic.eu",
+			"homepage": "https://www.pronamic.eu/",
+			"role": "Developer"
+		},
+		{
+			"name": "Remco Tolsma",
+			"email": "info@remcotolsma.nl",
+			"homepage": "https://www.remcotolsma.nl/",
+			"role": "Developer"
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"automattic/jetpack-autoloader": true,
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true
+		},
+		"platform": {
+			"php": "8.3"
+		},
+		"platform-check": false,
+		"sort-packages": true
+	},
+	"require": {
+		"php": "^8.3",
+		"automattic/jetpack-autoloader": "^6.0",
+		"composer/installers": "^2.3"
+	},
+	"require-dev": {
+		"deployer/deployer": "^7.5",
+		"phpstan/extension-installer": "^1.4",
+		"phpstan/phpstan": "^2.2",
+		"pronamic/wp-coding-standards": "^2.5",
+		"rector/rector": "^2.6",
+		"roots/wordpress-no-content": "^7.1",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"wp-cli/dist-archive-command": "*",
+		"wp-cli/wp-cli-bundle": "*"
+	},
+	"extra": {
+		"installer-paths": {
+			"packages/{$vendor}/{$name}": [
+				"vendor:pronamic",
+				"vendor:wp-pay",
+				"woocommerce/action-scheduler"
+			]
+		},
+		"wp-slug": "orbis-contacts"
+	},
+	"scripts": {
+		"build": [
+			"rm -rf ./build/stage-1",
+			"rm -rf ./build/orbis-contacts/*",
+			"rsync --recursive --verbose --exclude-from=.distignore --exclude=/vendor/ ./ ./build/stage-1/",
+			"composer install --no-dev --prefer-dist --optimize-autoloader --working-dir=./build/stage-1/",
+			"rsync --recursive --verbose --exclude-from=.distignore ./build/stage-1/ ./build/orbis-contacts/",
+			"vendor/bin/wp i18n make-pot ./build/orbis-contacts/ --slug=orbis-contacts",
+			"vendor/bin/wp i18n make-mo ./build/orbis-contacts/languages/",
+			"vendor/bin/wp dist-archive ./build/orbis-contacts/ --plugin-dirname=orbis-contacts --force"
+		],
+		"dist-archive": "wp dist-archive . --plugin-dirname=orbis-contacts",
+		"make-pot": [
+			"@build",
+			"rsync --recursive --delete --verbose ./build/orbis-contacts/languages/ ./languages/",
+			"vendor/bin/wp i18n update-po ./languages/orbis-contacts.pot",
+			"php -r '$bin_dir = \"vendor\" . DIRECTORY_SEPARATOR . \"bin\"; $wp = $bin_dir . DIRECTORY_SEPARATOR . \"wp\"; if ( DIRECTORY_SEPARATOR === \"\\\\\" && file_exists( $wp . \".bat\" ) ) { $wp .= \".bat\"; } if ( ! is_file( $wp ) && ! is_link( $wp ) ) { fwrite( STDERR, \"WP-CLI binary not found at \" . $wp . PHP_EOL ); exit( 1 ); } $process = proc_open( [ $wp, \"i18n\", \"make-mo\", \"./languages/orbis-contacts-nl_NL.po\" ], [ 0 => STDIN, 1 => STDOUT, 2 => STDERR ], $pipes ); if ( ! is_resource( $process ) ) { fwrite( STDERR, \"Unable to start WP-CLI.\" . PHP_EOL ); exit( 1 ); } $exit_code = proc_close( $process ); if ( 0 !== $exit_code ) { exit( $exit_code ); }'"
+		],
+		"phpcs": "vendor/bin/phpcs",
+		"phpcbf": "vendor/bin/phpcbf",
+		"phpstan": "vendor/bin/phpstan analyse --memory-limit=-1"
+	}
+}

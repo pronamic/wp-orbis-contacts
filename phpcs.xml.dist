@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<ruleset name="Orbis Contacts">
+	<file>.</file>
+
+	<exclude-pattern type="relative">^blocks/*</exclude-pattern>
+	<exclude-pattern type="relative">^build/*</exclude-pattern>
+	<exclude-pattern type="relative">^node_modules/*</exclude-pattern>
+	<exclude-pattern type="relative">^packages/*</exclude-pattern>
+	<exclude-pattern type="relative">^vendor/*</exclude-pattern>
+
+	<rule ref="PronamicWP">
+		<exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery"/>
+		<exclude name="WordPress.DB.DirectDatabaseQuery.NoCaching"/>
+	</rule>
+</ruleset>

@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Orbis Contacts 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/orbis-contacts\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-05T09:33:11+00:00\n"
+"PO-Revision-Date: 2026-10-05T09:51:12+00:00\n"
+"Language: nl_NL\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: orbis-contacts\n"
+
+#. Plugin Name of the plugin
+#: orbis-contacts.php:11
+msgid "Orbis Contacts"
+msgstr "Orbis Contacts"
+
+#. Plugin URI of the plugin
+#: orbis-contacts.php:12
+msgid "https://github.com/pronamic/wp-orbis-contacts"
+msgstr "https://github.com/pronamic/wp-orbis-contacts"
+
+#. Description of the plugin
+#: orbis-contacts.php:13
+msgid "WordPress plugin for Orbis that provides a shared contact layer for persons and organizations, including email addresses, phone numbers, social accounts and relations between contacts."
+msgstr "WordPress-plugin voor Orbis die een gedeelde contactlaag biedt voor personen en organisaties, inclusief e-mailadressen, telefoonnummers, social media-accounts en relaties tussen contacten."
+
+#. Author of the plugin
+#: orbis-contacts.php:17
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin
+#: orbis-contacts.php:18
+msgid "https://www.pronamic.eu/"
+msgstr "https://www.pronamic.nl/"
+
+#: psr-4/ContactPostType.php:57
+#: psr-4/ContactPostType.php:65
+msgid "Contacts"
+msgstr "Contacten"
+
+#: psr-4/ContactPostType.php:59
+msgctxt "post type general name"
+msgid "Contacts"
+msgstr "Contacten"
+
+#: psr-4/ContactPostType.php:60
+msgctxt "post type singular name"
+msgid "Contact"
+msgstr "Contact"
+
+#: psr-4/ContactPostType.php:61
+msgctxt "admin menu"
+msgid "Contacts"
+msgstr "Contacten"
+
+#: psr-4/ContactPostType.php:62
+msgid "All Contacts"
+msgstr "Alle contacten"
+
+#: psr-4/ContactPostType.php:63
+msgid "Search Contacts"
+msgstr "Contacten zoeken"
+
+#: psr-4/ContactPostType.php:64
+msgid "No contacts found."
+msgstr "Geen contacten gevonden."
+
+#: psr-4/ContactPostType.php:75
+msgctxt "slug"
+msgid "contacts"
+msgstr "contacten"
