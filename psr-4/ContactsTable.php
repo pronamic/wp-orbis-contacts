@@ -84,7 +84,7 @@ final class ContactsTable {
 	 * @return void
 	 */
 	private function maybe_install() {
-		$version = '1.0.0';
+		$version = '1.1.0';
 
 		if ( \get_option( 'orbis_contacts_db_version' ) === $version ) {
 			return;
@@ -102,12 +102,42 @@ final class ContactsTable {
 			"CREATE TABLE $table_name (
 				id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 				post_id BIGINT(20) UNSIGNED NOT NULL,
+				name VARCHAR(255) NOT NULL DEFAULT '',
 				created_at DATETIME NOT NULL,
 				updated_at DATETIME NOT NULL,
 				PRIMARY KEY  (id),
-				UNIQUE KEY post_id (post_id)
+				UNIQUE KEY post_id (post_id),
+				KEY name (name(191))
 			) $charset_collate;"
 		);
+
+		/**
+		 * The `dbDelta()` function does not support foreign keys, so we
+		 * add the foreign key on `post_id` ourselves if it doesn't exist.
+		 *
+		 * @link https://core.trac.wordpress.org/ticket/19207
+		 */
+		$foreign_key_name = $table_name . '_post_id_fk';
+
+		$foreign_key_exists = $wpdb->get_var(
+			$wpdb->prepare(
+				'SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = DATABASE() AND TABLE_NAME = %s AND CONSTRAINT_NAME = %s AND CONSTRAINT_TYPE = %s',
+				$table_name,
+				$foreign_key_name,
+				'FOREIGN KEY'
+			)
+		);
+
+		if ( null === $foreign_key_exists ) {
+			$wpdb->query(
+				(string) $wpdb->prepare(
+					'ALTER TABLE %i ADD CONSTRAINT %i FOREIGN KEY ( post_id ) REFERENCES %i ( ID ) ON DELETE CASCADE', // phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange
+					$table_name,
+					$foreign_key_name,
+					$wpdb->posts
+				)
+			);
+		}
 
 		\update_option( 'orbis_contacts_db_version', $version );
 	}
@@ -132,11 +162,14 @@ final class ContactsTable {
 
 		$now = \current_time( 'mysql', true );
 
+		$name = \mb_substr( $post->post_title, 0, 255 );
+
 		$wpdb->query(
 			(string) $wpdb->prepare(
-				'INSERT INTO %i ( post_id, created_at, updated_at ) VALUES ( %d, %s, %s ) ON DUPLICATE KEY UPDATE updated_at = VALUES( updated_at )',
+				'INSERT INTO %i ( post_id, name, created_at, updated_at ) VALUES ( %d, %s, %s, %s ) ON DUPLICATE KEY UPDATE name = VALUES( name ), updated_at = VALUES( updated_at )',
 				self::get_table_name(),
 				$post_id,
+				$name,
 				$now,
 				$now
 			)
