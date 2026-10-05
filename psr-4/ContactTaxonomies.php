@@ -128,7 +128,7 @@ final class ContactTaxonomies {
 	 * @return void
 	 */
 	private function registered_post_type( string $post_type, WP_Post_Type $post_type_object ) {
-		if ( ! \post_type_supports( $post_type_object->name, 'orbis_contact' ) ) {
+		if ( ! \post_type_supports( $post_type_object->name, 'orbis-contact' ) ) {
 			return;
 		}
 

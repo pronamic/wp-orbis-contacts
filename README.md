@@ -6,14 +6,17 @@ This plugin is based on the [SolveBeam WordPress plugin boilerplate](https://git
 
 ## Contact post types
 
-A post type becomes a contact by supporting `orbis_contact`, Orbis Persons and Orbis Organizations register their post types like this:
+A post type becomes a contact by supporting `orbis-contact`, Orbis Persons and Orbis Organizations register their post types like this:
 
 ```php
 \register_post_type(
 	'orbis_person',
 	[
-		'supports'     => [ 'title', 'editor', 'orbis_contact' ],
-		'show_in_menu' => 'edit.php?post_type=orbis_contact',
+		'supports' => [
+			'title',
+			'editor',
+			'orbis-contact',
+		],
 	]
 );
 ```

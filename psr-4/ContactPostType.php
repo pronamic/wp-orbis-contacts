@@ -51,7 +51,7 @@ final class ContactPostType {
 	 * @return array<string> Post types.
 	 */
 	public static function get_contact_post_types(): array {
-		return \array_values( \get_post_types_by_support( 'orbis_contact' ) );
+		return \array_values( \get_post_types_by_support( 'orbis-contact' ) );
 	}
 
 	/**

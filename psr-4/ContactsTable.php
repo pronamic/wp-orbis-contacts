@@ -120,7 +120,7 @@ final class ContactsTable {
 	 * @return void
 	 */
 	private function sync_post( int $post_id, WP_Post $post ) {
-		if ( ! \post_type_supports( $post->post_type, 'orbis_contact' ) ) {
+		if ( ! \post_type_supports( $post->post_type, 'orbis-contact' ) ) {
 			return;
 		}
 
