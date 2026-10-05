@@ -73,5 +73,6 @@ final class Plugin {
 		new ContactsTable();
 		new ContactJson();
 		new ContactDetailsMetaBox( $this->plugin_file );
+		new TemplateController();
 	}
 }

@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-10-05T09:33:11+00:00\n"
-"PO-Revision-Date: 2026-10-05T16:27:51+00:00\n"
+"PO-Revision-Date: 2026-10-05T17:57:02+00:00\n"
 "Language: nl_NL\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-contacts\n"
@@ -43,6 +43,7 @@ msgid "Contact Details"
 msgstr "Contactgegevens"
 
 #: psr-4/ContactDetailsMetaBox.php:118
+#: templates/archive-orbis_contact.php:34
 msgid "Email Addresses"
 msgstr "E-mailadressen"
 
@@ -113,6 +114,7 @@ msgstr "contacten"
 
 #: psr-4/ContactPostType.php:167
 #: psr-4/ContactPostType.php:172
+#: templates/archive-orbis_contact.php:33
 msgid "Type"
 msgstr "Type"
 
@@ -159,6 +161,7 @@ msgid "New Category Name"
 msgstr "Nieuwe categorienaam"
 
 #: psr-4/ContactTaxonomies.php:57
+#: templates/archive-orbis_contact.php:35
 msgid "Categories"
 msgstr "Categorieën"
 
@@ -268,3 +271,19 @@ msgstr "Factuurverzendmethoden"
 msgctxt "slug"
 msgid "invoice-shipping-methods"
 msgstr "factuurverzendmethoden"
+
+#: templates/archive-orbis_contact.php:31
+msgid "Photo"
+msgstr "Foto"
+
+#: templates/archive-orbis_contact.php:32
+msgid "Name"
+msgstr "Naam"
+
+#: templates/archive-orbis_contact.php:36
+msgid "Author"
+msgstr "Auteur"
+
+#: templates/archive-orbis_contact.php:37
+msgid "Actions"
+msgstr "Acties"

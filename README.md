@@ -66,6 +66,14 @@ The `_orbis_contact_json` post meta looks like this:
 
 Use `ContactJson::get( $post_id )` and `ContactJson::get_email_addresses( $post_id )` to read the contact details.
 
+## Templates
+
+The plugin ships an archive contact template, modelled after the person archive template of [Orbis Persons](https://github.com/pronamic/wp-orbis-persons). It is used unless the theme has its own `archive-orbis_contact.php`.
+
+| Template | Shown on | Content |
+|---|---|---|
+| `templates/archive-orbis_contact.php` | Contacts archive (`/contacts/`) | Table with photo, name, type, email addresses, categories and author |
+
 ## Requirements
 
 - PHP 8.3+
