@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-10-05T09:33:11+00:00\n"
-"PO-Revision-Date: 2026-10-05T13:19:46+00:00\n"
+"PO-Revision-Date: 2026-10-05T13:35:37+00:00\n"
 "Language: nl_NL\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-contacts\n"
@@ -42,41 +42,35 @@ msgstr "https://www.pronamic.nl/"
 msgid "Contact Details"
 msgstr "Contactgegevens"
 
-#: psr-4/ContactDetailsMetaBox.php:108
+#: psr-4/ContactDetailsMetaBox.php:118
 msgid "Email Addresses"
 msgstr "E-mailadressen"
 
-#: psr-4/ContactDetailsMetaBox.php:113
-#: psr-4/ContactDetailsMetaBox.php:166
-msgid "Email Address"
-msgstr "E-mailadres"
-
-#: psr-4/ContactDetailsMetaBox.php:114
-#: psr-4/ContactDetailsMetaBox.php:169
-msgid "Label"
-msgstr "Label"
-
-#: psr-4/ContactDetailsMetaBox.php:115
-msgid "Actions"
-msgstr "Acties"
-
-#: psr-4/ContactDetailsMetaBox.php:133
+#: psr-4/ContactDetailsMetaBox.php:131
 msgid "Add email address"
 msgstr "E-mailadres toevoegen"
 
-#: psr-4/ContactDetailsMetaBox.php:145
+#: psr-4/ContactDetailsMetaBox.php:139
 msgid "Work"
 msgstr "Werk"
 
-#: psr-4/ContactDetailsMetaBox.php:146
+#: psr-4/ContactDetailsMetaBox.php:140
 msgid "Home"
 msgstr "Privé"
 
-#: psr-4/ContactDetailsMetaBox.php:147
+#: psr-4/ContactDetailsMetaBox.php:141
 msgid "Other"
 msgstr "Overig"
 
-#: psr-4/ContactDetailsMetaBox.php:173
+#: psr-4/ContactDetailsMetaBox.php:162
+msgid "Email Address"
+msgstr "E-mailadres"
+
+#: psr-4/ContactDetailsMetaBox.php:163
+msgid "Label"
+msgstr "Label"
+
+#: psr-4/ContactDetailsMetaBox.php:166
 msgid "Remove"
 msgstr "Verwijderen"
 
