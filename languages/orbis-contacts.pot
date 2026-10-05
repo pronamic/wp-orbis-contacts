@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-05T13:35:37+00:00\n"
+"POT-Creation-Date: 2026-10-05T16:27:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-contacts\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: orbis-contacts.php:13
-msgid "WordPress plugin for Orbis that provides a shared contact layer for persons and organizations, including email addresses, phone numbers, social accounts and relations between contacts."
+msgid "Shared contact layer for Orbis persons and organizations, including email addresses, phone numbers, social accounts and relations between contacts."
 msgstr ""
 
 #. Author of the plugin

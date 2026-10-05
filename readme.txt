@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WordPress plugin for Orbis that provides a shared contact layer for persons and organizations, including email addresses, phone numbers, social accounts and relations between contacts.
+Shared contact layer for Orbis persons and organizations, including email addresses, phone numbers, social accounts and relations between contacts.
 
 == Description ==
 
