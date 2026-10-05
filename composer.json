@@ -64,10 +64,9 @@
 	"scripts": {
 		"build": [
 			"rm -rf ./build/stage-1",
-			"rm -rf ./build/orbis-contacts/*",
 			"rsync --recursive --verbose --exclude-from=.distignore --exclude=/vendor/ ./ ./build/stage-1/",
 			"composer install --no-dev --prefer-dist --optimize-autoloader --working-dir=./build/stage-1/",
-			"rsync --recursive --verbose --exclude-from=.distignore ./build/stage-1/ ./build/orbis-contacts/",
+			"rsync --recursive --delete --delete-excluded --verbose --exclude-from=.distignore ./build/stage-1/ ./build/orbis-contacts/",
 			"vendor/bin/wp i18n make-pot ./build/orbis-contacts/ --slug=orbis-contacts",
 			"vendor/bin/wp i18n make-mo ./build/orbis-contacts/languages/",
 			"vendor/bin/wp dist-archive ./build/orbis-contacts/ --plugin-dirname=orbis-contacts --force"

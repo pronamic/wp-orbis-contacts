@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-05T09:51:11+00:00\n"
+"POT-Creation-Date: 2026-10-05T12:39:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-contacts\n"
@@ -39,39 +39,197 @@ msgstr ""
 msgid "https://www.pronamic.eu/"
 msgstr ""
 
-#: psr-4/ContactPostType.php:57
-#: psr-4/ContactPostType.php:65
+#: psr-4/ContactPostType.php:66
+#: psr-4/ContactPostType.php:74
 msgid "Contacts"
 msgstr ""
 
-#: psr-4/ContactPostType.php:59
+#: psr-4/ContactPostType.php:68
 msgctxt "post type general name"
 msgid "Contacts"
 msgstr ""
 
-#: psr-4/ContactPostType.php:60
+#: psr-4/ContactPostType.php:69
 msgctxt "post type singular name"
 msgid "Contact"
 msgstr ""
 
-#: psr-4/ContactPostType.php:61
+#: psr-4/ContactPostType.php:70
 msgctxt "admin menu"
 msgid "Contacts"
 msgstr ""
 
-#: psr-4/ContactPostType.php:62
+#: psr-4/ContactPostType.php:71
 msgid "All Contacts"
 msgstr ""
 
-#: psr-4/ContactPostType.php:63
+#: psr-4/ContactPostType.php:72
 msgid "Search Contacts"
 msgstr ""
 
-#: psr-4/ContactPostType.php:64
+#: psr-4/ContactPostType.php:73
 msgid "No contacts found."
 msgstr ""
 
-#: psr-4/ContactPostType.php:75
+#: psr-4/ContactPostType.php:84
 msgctxt "slug"
 msgid "contacts"
+msgstr ""
+
+#: psr-4/ContactPostType.php:167
+#: psr-4/ContactPostType.php:172
+msgid "Type"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:47
+msgctxt "taxonomy general name"
+msgid "Categories"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:48
+msgctxt "taxonomy singular name"
+msgid "Category"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:49
+msgid "Search Categories"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:50
+msgid "All Categories"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:51
+msgid "Parent Category"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:52
+msgid "Parent Category:"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:53
+msgid "Edit Category"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:54
+msgid "Update Category"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:55
+msgid "Add New Category"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:56
+msgid "New Category Name"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:57
+msgid "Categories"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:62
+msgctxt "slug"
+msgid "contact-category"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:73
+msgctxt "taxonomy general name"
+msgid "Payment Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:74
+msgctxt "taxonomy singular name"
+msgid "Payment Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:75
+msgid "Search Payment Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:76
+msgid "All Payment Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:77
+msgid "Parent Payment Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:78
+msgid "Parent Payment Method:"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:79
+msgid "Edit Payment Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:80
+msgid "Update Payment Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:81
+msgid "Add New Payment Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:82
+msgid "New Payment Method Name"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:83
+msgid "Payment Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:88
+msgctxt "slug"
+msgid "payment-methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:100
+msgctxt "taxonomy general name"
+msgid "Invoice Shipping Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:101
+msgctxt "taxonomy singular name"
+msgid "Invoice Shipping Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:102
+msgid "Search Invoice Shipping Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:103
+msgid "All Invoice Shipping Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:104
+msgid "Parent Invoice Shipping Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:105
+msgid "Parent Invoice Shipping Method:"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:106
+msgid "Edit Invoice Shipping Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:107
+msgid "Update Invoice Shipping Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:108
+msgid "Add New Invoice Shipping Method"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:109
+msgid "New Invoice Shipping Method Name"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:110
+msgid "Invoice Shipping Methods"
+msgstr ""
+
+#: psr-4/ContactTaxonomies.php:115
+msgctxt "slug"
+msgid "invoice-shipping-methods"
 msgstr ""

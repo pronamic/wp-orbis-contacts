@@ -68,18 +68,8 @@ final class Plugin {
 	 * @return void
 	 */
 	public function plugins_loaded() {
-		\add_action( 'init', $this->load_textdomain( ... ) );
-
 		new ContactPostType();
+		new ContactTaxonomies();
 		new ContactsTable();
-	}
-
-	/**
-	 * Load textdomain.
-	 *
-	 * @return void
-	 */
-	private function load_textdomain() {
-		\load_plugin_textdomain( 'orbis-contacts', false, \dirname( \plugin_basename( $this->plugin_file ) ) . '/languages' );
 	}
 }

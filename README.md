@@ -24,8 +24,8 @@ A post type becomes a contact by supporting `orbis_contact`, Orbis Persons and O
 
 ## Requirements
 
-- PHP 8.2+
-- WordPress 6.7+
+- PHP 8.3+
+- WordPress 7.1+
 - Composer
 - Node.js / npm
 

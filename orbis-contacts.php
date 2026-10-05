@@ -12,8 +12,8 @@
  * Plugin URI:        https://github.com/pronamic/wp-orbis-contacts
  * Description:       WordPress plugin for Orbis that provides a shared contact layer for persons and organizations, including email addresses, phone numbers, social accounts and relations between contacts.
  * Version:           1.0.0
- * Requires at least: 6.7
- * Requires PHP:      8.2
+ * Requires at least: 7.1
+ * Requires PHP:      8.3
  * Author:            Pronamic
  * Author URI:        https://www.pronamic.eu/
  * Text Domain:       orbis-contacts

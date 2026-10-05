@@ -34,6 +34,15 @@ final class ContactPostType {
 		\add_filter( 'the_posts', $this->the_posts( ... ), 10, 2 );
 
 		\add_filter( 'wp_count_posts', $this->count_posts( ... ), 10, 3 );
+
+		\add_filter( 'manage_orbis_contact_posts_columns', $this->manage_posts_columns( ... ) );
+
+		/*
+		 * WordPress fires `manage_{$post_type}_posts_custom_column` with the
+		 * post type of each post (e.g. `orbis_person`), not `orbis_contact`.
+		 */
+		\add_action( 'manage_posts_custom_column', $this->posts_custom_column( ... ), 10, 2 );
+		\add_action( 'manage_pages_custom_column', $this->posts_custom_column( ... ), 10, 2 );
 	}
 
 	/**
@@ -140,5 +149,62 @@ final class ContactPostType {
 		}
 
 		return (object) \array_merge( \get_object_vars( $counts ), $totals );
+	}
+
+	/**
+	 * Add a type column to the contacts admin list.
+	 *
+	 * @param array<string, string> $columns Columns.
+	 * @return array<string, string> Columns.
+	 */
+	private function manage_posts_columns( array $columns ): array {
+		$result = [];
+
+		foreach ( $columns as $key => $label ) {
+			$result[ $key ] = $label;
+
+			if ( 'title' === $key ) {
+				$result['orbis_contact_type'] = \__( 'Type', 'orbis-contacts' );
+			}
+		}
+
+		if ( ! \array_key_exists( 'orbis_contact_type', $result ) ) {
+			$result['orbis_contact_type'] = \__( 'Type', 'orbis-contacts' );
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Render the type column in the contacts admin list.
+	 *
+	 * @param string $column  Column.
+	 * @param int    $post_id Post ID.
+	 * @return void
+	 */
+	private function posts_custom_column( string $column, int $post_id ) {
+		if ( 'orbis_contact_type' !== $column ) {
+			return;
+		}
+
+		$screen = \get_current_screen();
+
+		if ( null === $screen || 'orbis_contact' !== $screen->post_type ) {
+			return;
+		}
+
+		$post_type_object = \get_post_type_object( (string) \get_post_type( $post_id ) );
+
+		if ( null === $post_type_object ) {
+			return;
+		}
+
+		$label = $post_type_object->labels->singular_name ?? $post_type_object->label;
+
+		if ( ! \is_string( $label ) ) {
+			return;
+		}
+
+		echo \esc_html( $label );
 	}
 }
