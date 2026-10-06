@@ -66,6 +66,39 @@ The `_orbis_contact_json` post meta looks like this:
 
 Use `ContactJson::get( $post_id )` and `ContactJson::get_email_addresses( $post_id )` to read the contact details.
 
+## Contact picker (Select2)
+
+Other plugins can let users pick a contact with a `select` element with the `orbis-contact-id-control` class. The value is an ID from the `{prefix}orbis_contacts` table.
+
+```php
+\wp_enqueue_script( 'orbis-contact-select2' );
+```
+
+```html
+<select name="contact_id" class="orbis-contact-id-control">
+	<option value="45" data-icon="dashicons-businessman" data-type-label="Person" data-email="info@example.com">John Doe</option>
+</select>
+```
+
+Use `ContactSelect2Controller::get_option_data( $contact_id )` for the data of a preselected option. The script searches through the `orbis-contacts/v1/contacts/select2?term=…` REST API endpoint, which returns the Select2 data format:
+
+```json
+{
+	"results": [
+		{
+			"id": 45,
+			"text": "John Doe",
+			"type": "orbis_person",
+			"type_label": "Person",
+			"icon": "dashicons-businessman",
+			"email": "info@example.com"
+		}
+	]
+}
+```
+
+The `select2` script and style are registered by the Orbis core plugin.
+
 ## Templates
 
 The plugin ships an archive contact template, modelled after the person archive template of [Orbis Persons](https://github.com/pronamic/wp-orbis-persons). It is used unless the theme has its own `archive-orbis_contact.php`.
