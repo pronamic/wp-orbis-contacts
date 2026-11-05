@@ -114,7 +114,7 @@ Other plugins can let users pick a contact with a `select` element with the `orb
 
 ```html
 <select name="contact_id" class="orbis-contact-id-control">
-	<option value="45" data-icon="dashicons-businessman" data-type-label="Person" data-email="info@example.com">John Doe</option>
+	<option value="45" data-icon="dashicons-businessman" data-type-label="Person" data-email="info@example.com" data-archived="1">John Doe</option>
 </select>
 ```
 
@@ -134,6 +134,8 @@ Use `ContactSelect2Controller::get_option_data( $contact_id )` for the data of a
 	]
 }
 ```
+
+Contacts archived with [Orbis Archiver](https://github.com/pronamic/wp-orbis-archiver) (`_orbis_archived_at` post meta) get an "Archived" label in the picker.
 
 The `select2` script and style are registered by the Orbis core plugin.
 

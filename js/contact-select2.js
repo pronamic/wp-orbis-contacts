@@ -2,8 +2,8 @@
  * Contact Select2
  *
  * Turns `select.orbis-contact-id-control` elements into a contact picker,
- * a preselected `<option>` can provide `data-icon`, `data-type-label` and
- * `data-email` attributes.
+ * a preselected `<option>` can provide `data-icon`, `data-type-label`,
+ * `data-email` and `data-archived` attributes.
  *
  * @package Pronamic\Orbis\Contacts
  */
@@ -19,7 +19,18 @@ jQuery( function ( $ ) {
 			icon: item.icon ?? dataset.icon,
 			typeLabel: item.type_label ?? dataset.typeLabel,
 			email: item.email ?? dataset.email,
+			archived: item.archived ?? '1' === dataset.archived,
 		};
+	};
+
+	const archivedLabel = ( data ) => {
+		if ( ! data.archived ) {
+			return null;
+		}
+
+		return $( '<span class="orbis-contact-option-archived"></span>' ).text(
+			orbisContactSelect2.i18n.archived
+		);
 	};
 
 	const templateResult = ( item ) => {
@@ -31,13 +42,16 @@ jQuery( function ( $ ) {
 
 		const meta = [ data.typeLabel, data.email ].filter( Boolean ).join( ' · ' );
 
-		return $( '<span class="orbis-contact-option"></span>' ).append(
-			$( '<span class="dashicons" aria-hidden="true"></span>' ).addClass( data.icon ),
-			$( '<span></span>' ).append(
-				$( '<strong></strong>' ).text( data.text ),
-				$( '<span class="orbis-contact-option-meta"></span>' ).text( meta )
-			)
-		);
+		return $( '<span class="orbis-contact-option"></span>' )
+			.toggleClass( 'is-archived', Boolean( data.archived ) )
+			.append(
+				$( '<span class="dashicons" aria-hidden="true"></span>' ).addClass( data.icon ),
+				$( '<span></span>' ).append(
+					$( '<strong></strong>' ).text( data.text ),
+					archivedLabel( data ),
+					$( '<span class="orbis-contact-option-meta"></span>' ).text( meta )
+				)
+			);
 	};
 
 	const templateSelection = ( item ) => {
@@ -47,12 +61,17 @@ jQuery( function ( $ ) {
 			return item.text;
 		}
 
-		return $( '<span class="orbis-contact-option"></span>' ).append(
-			$( '<span class="dashicons" aria-hidden="true"></span>' )
-				.addClass( data.icon )
-				.attr( 'title', data.typeLabel ?? '' ),
-			$( '<span></span>' ).text( data.text )
-		);
+		return $( '<span class="orbis-contact-option"></span>' )
+			.toggleClass( 'is-archived', Boolean( data.archived ) )
+			.append(
+				$( '<span class="dashicons" aria-hidden="true"></span>' )
+					.addClass( data.icon )
+					.attr( 'title', data.typeLabel ?? '' ),
+				$( '<span></span>' ).append(
+					$( '<span></span>' ).text( data.text ),
+					archivedLabel( data )
+				)
+			);
 	};
 
 	$( '.orbis-contact-id-control' ).select2( {

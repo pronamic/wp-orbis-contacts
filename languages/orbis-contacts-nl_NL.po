@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-10-05T09:33:11+00:00\n"
-"PO-Revision-Date: 2026-11-05T14:11:52+00:00\n"
+"PO-Revision-Date: 2026-11-05T19:48:16+00:00\n"
 "Language: nl_NL\n"
 "X-Generator: Poedit 3.9\n"
 "X-Domain: orbis-contacts\n"
@@ -37,6 +37,11 @@ msgstr "Pronamic"
 #: orbis-contacts.php:18
 msgid "https://www.pronamic.eu/"
 msgstr "https://www.pronamic.nl/"
+
+#: psr-4/CliController.php:301
+#: psr-4/ContactDetailsMetaBox.php:178
+msgid "Mobile"
+msgstr "Mobiel"
 
 #: psr-4/ContactDetailsMetaBox.php:56
 msgid "Contact Details"
@@ -73,10 +78,6 @@ msgstr "Telefoonnummers"
 #: psr-4/ContactDetailsMetaBox.php:169
 msgid "Add phone number"
 msgstr "Telefoonnummer toevoegen"
-
-#: psr-4/ContactDetailsMetaBox.php:178
-msgid "Mobile"
-msgstr "Mobiel"
 
 #: psr-4/ContactDetailsMetaBox.php:201
 msgid "Email Address"
@@ -146,6 +147,10 @@ msgstr "Type"
 #: psr-4/ContactSelect2Controller.php:80
 msgid "Search term, matched against the contact name."
 msgstr "Zoekterm, vergeleken met de naam van het contact."
+
+#: psr-4/ContactSelect2Controller.php:261
+msgid "Archived"
+msgstr "Gearchiveerd"
 
 #: psr-4/ContactTaxonomies.php:47
 msgctxt "taxonomy general name"

@@ -134,7 +134,7 @@ final readonly class ContactSelect2Controller {
 	 * REST API endpoint, as `data-*` attributes.
 	 *
 	 * @param int $contact_id Contact ID.
-	 * @return array{id: int, text: string, type: string, type_label: string, icon: string, email: string|null}|null
+	 * @return array{id: int, text: string, type: string, type_label: string, icon: string, email: string|null, archived: bool}|null
 	 */
 	public static function get_option_data( int $contact_id ): ?array {
 		$wpdb = self::get_wpdb();
@@ -155,7 +155,7 @@ final readonly class ContactSelect2Controller {
 	 * Get Select2 item from a database row.
 	 *
 	 * @param mixed $row Database row with `id`, `post_id` and `name`.
-	 * @return array{id: int, text: string, type: string, type_label: string, icon: string, email: string|null}|null
+	 * @return array{id: int, text: string, type: string, type_label: string, icon: string, email: string|null, archived: bool}|null
 	 */
 	private static function get_item_from_row( mixed $row ): ?array {
 		if ( ! \is_array( $row ) ) {
@@ -175,7 +175,7 @@ final readonly class ContactSelect2Controller {
 	 * @param int    $contact_id Contact ID.
 	 * @param int    $post_id    Post ID.
 	 * @param string $name       Name.
-	 * @return array{id: int, text: string, type: string, type_label: string, icon: string, email: string|null}
+	 * @return array{id: int, text: string, type: string, type_label: string, icon: string, email: string|null, archived: bool}
 	 */
 	private static function get_item( int $contact_id, int $post_id, string $name ): array {
 		$post_type = (string) \get_post_type( $post_id );
@@ -206,7 +206,22 @@ final readonly class ContactSelect2Controller {
 			'type_label' => $type_label,
 			'icon'       => $icon,
 			'email'      => $email_addresses[0]['email'] ?? null,
+			'archived'   => self::is_archived( $post_id ),
 		];
+	}
+
+	/**
+	 * Check if a contact post is archived.
+	 *
+	 * The Orbis Archiver plugin stores the archive state in the
+	 * `_orbis_archived_at` post meta.
+	 *
+	 * @link https://github.com/pronamic/wp-orbis-archiver
+	 * @param int $post_id Post ID.
+	 * @return bool True if archived.
+	 */
+	private static function is_archived( int $post_id ): bool {
+		return '' !== \get_post_meta( $post_id, '_orbis_archived_at', true );
 	}
 
 	/**
@@ -242,6 +257,9 @@ final readonly class ContactSelect2Controller {
 			[
 				'restUrl' => \rest_url( 'orbis-contacts/v1/contacts/select2' ),
 				'nonce'   => \wp_create_nonce( 'wp_rest' ),
+				'i18n'    => [
+					'archived' => \__( 'Archived', 'orbis-contacts' ),
+				],
 			]
 		);
 
@@ -252,8 +270,11 @@ final readonly class ContactSelect2Controller {
 			'.orbis-contact-option { display: flex; align-items: center; gap: 6px; }
 			.orbis-contact-option .dashicons { flex: none; color: #646970; }
 			.orbis-contact-option-meta { display: block; font-size: 12px; color: #646970; }
+			.orbis-contact-option-archived { margin-left: 6px; padding: 0 6px; border-radius: 2px; background: #dcdcde; color: #50575e; font-size: 11px; font-weight: 400; line-height: 18px; }
+			.orbis-contact-option.is-archived strong { color: #646970; }
 			.select2-results__option--highlighted .orbis-contact-option .dashicons,
-			.select2-results__option--highlighted .orbis-contact-option-meta { color: inherit; }'
+			.select2-results__option--highlighted .orbis-contact-option-meta,
+			.select2-results__option--highlighted .orbis-contact-option.is-archived strong { color: inherit; }'
 		);
 	}
 
