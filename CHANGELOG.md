@@ -13,5 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `orbis_contact` post type that queries all post types supporting `orbis_contact`, with a contacts archive and admin menu.
 - `orbis_contacts` table with a row for every contact post.
 - `orbis-contacts/v1/contacts/select2` REST API endpoint and `orbis-contact-select2` script for a contact picker.
+- Multiple phone numbers with labels in the "Contact Details" meta box, standardized to E.164 with `giggsey/libphonenumber-for-php` and stored one per `_orbis_contact_phone` post meta row.
+- "Default Phone Country" setting on Settings → General.
 
 [unreleased]: https://github.com/pronamic/wp-orbis-contacts/commits/main

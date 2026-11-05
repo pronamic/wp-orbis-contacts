@@ -27,11 +27,12 @@ A post type becomes a contact by supporting `orbis-contact`, Orbis Persons and O
 
 ## Contact details
 
-Every contact post type gets a "Contact Details" meta box with multiple email addresses, each with a label (e.g. Work, Home, Other).
+Every contact post type gets a "Contact Details" meta box with multiple email addresses and phone numbers, each with a label (e.g. Work, Mobile, Home, Other).
 
 | Meta key | Value |
 |---|---|
 | `_orbis_contact_email` | One row per email address, a plain email address string. |
+| `_orbis_contact_phone` | One row per phone number, standardized to [E.164](https://en.wikipedia.org/wiki/E.164), e.g. `+31612345678`. |
 | `_orbis_contact_json` | The whole contact as one JSON string, see [`json-schemas/contact.json`](json-schemas/contact.json). |
 
 Because every email address is a separate meta row, contacts are easy to find with a meta query:
@@ -45,6 +46,22 @@ $query = new \WP_Query(
 	]
 );
 ```
+
+### Phone numbers
+
+Phone numbers are standardized to E.164 with [libphonenumber for PHP](https://github.com/giggsey/libphonenumber-for-php), so they can be queried exactly, no matter how they were entered (`06 12345678`, `+31 6 1234 5678`, `0031612345678`, …):
+
+```php
+$query = new \WP_Query(
+	[
+		'post_type'  => 'orbis_contact',
+		'meta_key'   => '_orbis_contact_phone',
+		'meta_value' => \Pronamic\Orbis\Contacts\PhoneNumbers::to_e164( '06 12345678' ),
+	]
+);
+```
+
+Numbers without a country calling code are parsed with the "Default Phone Country" on Settings → General (`orbis_contacts_default_country` option, defaults to the country of the site locale). Numbers that can't be standardized are kept in `_orbis_contact_json` with `e164` set to `null`, without a `_orbis_contact_phone` row, and get a warning in the meta box.
 
 The `_orbis_contact_json` post meta looks like this:
 
@@ -60,11 +77,18 @@ The `_orbis_contact_json` post meta looks like this:
 			"email": "info@example.com",
 			"label": "Work"
 		}
+	],
+	"phone_numbers": [
+		{
+			"input": "06 12345678",
+			"label": "Mobile",
+			"e164": "+31612345678"
+		}
 	]
 }
 ```
 
-Use `ContactJson::get( $post_id )` and `ContactJson::get_email_addresses( $post_id )` to read the contact details.
+Use `ContactJson::get( $post_id )`, `ContactJson::get_email_addresses( $post_id )` and `ContactJson::get_phone_numbers( $post_id )` to read the contact details.
 
 ## Contact picker (Select2)
 

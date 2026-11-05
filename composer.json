@@ -38,7 +38,8 @@
 	"require": {
 		"php": "^8.3",
 		"automattic/jetpack-autoloader": "^6.0",
-		"composer/installers": "^2.3"
+		"composer/installers": "^2.3",
+		"giggsey/libphonenumber-for-php": "^9.0"
 	},
 	"require-dev": {
 		"deployer/deployer": "^7.5",

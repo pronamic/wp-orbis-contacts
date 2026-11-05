@@ -36,13 +36,21 @@
 			"items": {
 				"$ref": "#/$defs/email_address"
 			}
+		},
+		"phone_numbers": {
+			"description": "Phone numbers of the contact.",
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/phone_number"
+			}
 		}
 	},
 	"required": [
 		"post_id",
 		"type",
 		"name",
-		"email_addresses"
+		"email_addresses",
+		"phone_numbers"
 	],
 	"$defs": {
 		"email_address": {
@@ -59,6 +67,31 @@
 			},
 			"required": [
 				"email"
+			]
+		},
+		"phone_number": {
+			"type": "object",
+			"properties": {
+				"input": {
+					"description": "Phone number as entered, for example `06 12345678`.",
+					"type": "string"
+				},
+				"label": {
+					"description": "Free label, for example `Work`, `Mobile`, `Home` or `Other`.",
+					"type": "string"
+				},
+				"e164": {
+					"description": "Phone number standardized to E.164, for example `+31612345678`, also stored in the `_orbis_contact_phone` post meta. `null` if the input could not be standardized.",
+					"type": [
+						"string",
+						"null"
+					],
+					"pattern": "^\\+[1-9][0-9]{1,14}$"
+				}
+			},
+			"required": [
+				"input",
+				"e164"
 			]
 		}
 	}
