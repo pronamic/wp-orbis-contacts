@@ -47,6 +47,13 @@ $query = new \WP_Query(
 );
 ```
 
+The `_orbis_email` post meta of Orbis Persons and Orbis Organizations can be migrated to the contact email addresses, without label. Invalid email addresses and addresses the contact already has are skipped, so it is safe to run multiple times. The old post meta is kept.
+
+```sh
+wp orbis-contacts migrate-email-addresses --dry-run
+wp orbis-contacts migrate-email-addresses
+```
+
 ### Phone numbers
 
 Phone numbers are standardized to E.164 with [libphonenumber for PHP](https://github.com/giggsey/libphonenumber-for-php), so they can be queried exactly, no matter how they were entered (`06 12345678`, `+31 6 1234 5678`, `0031612345678`, …):
@@ -62,6 +69,13 @@ $query = new \WP_Query(
 ```
 
 Numbers without a country calling code are parsed with the "Default Phone Country" on Settings → General (`orbis_contacts_default_country` option, defaults to the country of the site locale). Numbers that can't be standardized are kept in `_orbis_contact_json` with `e164` set to `null`, without a `_orbis_contact_phone` row, and get a warning in the meta box.
+
+The `_orbis_phone_number` and `_orbis_mobile_number` post meta of Orbis Persons can be migrated to the contact phone numbers (without label and with label "Mobile"). Numbers the contact already has are skipped, so it is safe to run multiple times. The old post meta is kept.
+
+```sh
+wp orbis-contacts migrate-phone-numbers --dry-run
+wp orbis-contacts migrate-phone-numbers
+```
 
 The `_orbis_contact_json` post meta looks like this:
 
