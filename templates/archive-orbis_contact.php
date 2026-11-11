@@ -45,8 +45,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						$contact_type = \get_post_type_object( (string) \get_post_type() );
 
-						$email_addresses = ContactJson::get_email_addresses( (int) \get_the_ID() );
-
 						$categories = \get_the_terms( (int) \get_the_ID(), 'orbis_contact_category' );
 						$categories = \is_array( $categories ) ? \wp_list_pluck( $categories, 'name' ) : [];
 
@@ -79,11 +77,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<?php echo \esc_html( null === $contact_type ? '' : $contact_type->labels->singular_name ); ?>
 							</td>
 							<td>
-								<?php foreach ( $email_addresses as $email_address ) : ?>
+								<?php
 
-									<a href="<?php echo \esc_url( 'mailto:' . $email_address['email'] ); ?>"><?php echo \esc_html( $email_address['email'] ); ?></a><br />
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block output is escaped in the render callback.
+								echo \render_block(
+									[
+										'blockName' => 'orbis-contacts/email-addresses',
+									]
+								);
 
-								<?php endforeach; ?>
+								?>
 							</td>
 							<td>
 								<?php echo \esc_html( \implode( ', ', $categories ) ); ?>
