@@ -104,6 +104,15 @@ The `_orbis_contact_json` post meta looks like this:
 
 Use `ContactJson::get( $post_id )`, `ContactJson::get_email_addresses( $post_id )` and `ContactJson::get_phone_numbers( $post_id )` to read the contact details.
 
+### Blocks
+
+| Block | Output |
+|---|---|
+| `orbis-contacts/phone-numbers` | The phone numbers of the contact as `tel:` links below each other, in international format. Numbers that can't be standardized are plain text. |
+| `orbis-contacts/email-addresses` | The email addresses of the contact as `mailto:` links below each other. |
+
+The blocks use the post from the block context (`postId`) and render nothing if the contact has no phone numbers or email addresses. They are PHP-only blocks, registered in the block editor with the `autoRegister` block support.
+
 ## Contact picker (Select2)
 
 Other plugins can let users pick a contact with a `select` element with the `orbis-contact-id-control` class. The value is an ID from the `{prefix}orbis_contacts` table.

@@ -75,6 +75,7 @@ final class Plugin {
 		new PhoneNumbers();
 		new ContactDetailsMetaBox( $this->plugin_file );
 		new ContactSelect2Controller( $this->plugin_file );
+		new Blocks();
 		new TemplateController();
 		new CliController();
 	}

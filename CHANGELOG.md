@@ -18,5 +18,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - "Default Phone Country" setting on Settings → General.
 - `wp orbis-contacts migrate-email-addresses` command to migrate the `_orbis_email` post meta to the contact email addresses.
 - `wp orbis-contacts migrate-phone-numbers` command to migrate the `_orbis_phone_number` and `_orbis_mobile_number` post meta to the contact phone numbers.
+- `orbis-contacts/phone-numbers` and `orbis-contacts/email-addresses` blocks that render the phone numbers and email addresses of a contact as links.
 
 [unreleased]: https://github.com/pronamic/wp-orbis-contacts/commits/main
